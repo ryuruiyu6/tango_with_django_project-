@@ -1,0 +1,47 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Register
+{% endblock %}
+
+{% block body_block %}
+    <h1>Register Here</h1>
+    
+    <form method="post" action=".">
+        {% csrf_token %}
+        
+        <div>
+            <strong>Username:</strong><br />
+            {{ form.username }}  <!-- THIS WAS MISSING! -->
+            <br />
+            Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+        </div>
+        
+        <div>
+            <strong>E-mail:</strong><br />
+            {{ form.email }}  <!-- THIS WAS MISSING! -->
+        </div>
+        
+        <div>
+            <strong>Password:</strong><br />
+            {{ form.password1 }}  <!-- THIS WAS MISSING! -->
+        </div>
+        
+        <ul>
+            <li>Your password can't be too similar to your other personal information.</li>
+            <li>Your password must contain at least 8 characters.</li>
+            <li>Your password can't be a commonly used password.</li>
+            <li>Your password can't be entirely numeric.</li>
+        </ul>
+        
+        <div>
+            <strong>Password confirmation:</strong><br />
+            {{ form.password2 }}  <!-- THIS WAS MISSING! -->
+            <br />
+            Enter the same password as before, for verification.
+        </div>
+        
+        <input type="submit" name="submit" value="Sign Up" />
+    </form>
+{% endblock %}
